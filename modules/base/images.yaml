@@ -1,0 +1,39 @@
+---
+# Graphic assets
+image:
+
+  - file: modules/assets/battery.svg
+    id: battery_icon_60px
+    resize: 60x60
+    type: RGB565
+    transparency: alpha_channel
+
+  - file: modules/assets/solar.svg
+    id: solar_icon_60px
+    resize: 60x60
+    type: RGB565
+    transparency: alpha_channel
+
+  - file: modules/assets/shore.svg
+    id: shore_icon_60px
+    resize: 60x60
+    type: RGB565
+    transparency: alpha_channel
+
+  - file: modules/assets/trueWind.svg
+    id: trueWind_indicator
+    resize: 50x50
+    type: RGB565
+    transparency: alpha_channel
+
+  - file: modules/assets/apparentWind.svg
+    id: apparentWind_indicator
+    resize: 50x50
+    type: RGB565
+    transparency: alpha_channel
+
+  - file: modules/assets/compassRose.svg
+    id: compass_rose_indicator
+    resize: 380x380
+    type: RGB565
+    transparency: alpha_channel

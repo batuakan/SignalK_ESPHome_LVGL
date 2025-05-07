@@ -1,0 +1,45 @@
+substitutions:
+  # Screen Size
+  screen_height: '480px'
+  screen_width: '480px'
+
+  screen_height_px: '480'
+  screen_width_px: '480'
+
+  #theme
+  text_font: roboto24
+  text_color: white
+
+  info_font: poetsen48
+
+
+esphome:
+  name: "waveshare-esp32-s3-t-lcd-21c"
+  friendly_name: "Waveshare-2.1-round"
+  comment: "Waveshare ESP32-S3-Touch-LCD-2.1C 480px Round Screen" 
+
+# Enable logging
+logger:
+
+api:
+
+
+packages:
+  wifi: !include modules/base/wifi.yaml
+  # Harware description file
+  hardware: !include modules/hardware/waveshare-esp32-s3-touch-lcd-2.1c.yaml
+  fonts: !include modules/base/fonts.yaml
+  sensors: !include modules/sensors/sensors_base.yaml
+  signalk: !include modules/sensors/signalk_base.yaml
+  signalk_wind: !include modules/sensors/signalk_wind.yaml
+  signalk_energry: !include modules/sensors/signalk_energy.yaml
+  
+  
+  # lvgl: !include modules/lvgl/lvgl.yaml
+  images: !include modules/base/images.yaml
+  scripts: !include modules/scripts/backlight.yaml
+
+  wind: !include modules/applications/wind.yaml
+  energy: !include modules/applications/energy.yaml
+  
+  settingss: !include modules/applications/settings.yaml

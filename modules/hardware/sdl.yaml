@@ -1,0 +1,24 @@
+esphome:
+  name: sdl2
+  friendly_name: SDL2 Test
+  project:
+    name: esphome.host
+    version: "1.1"
+
+host:
+
+logger:
+  level: DEBUG
+
+display:
+  - platform: sdl
+    id: my_display
+    show_test_card: true
+    dimensions:
+      width: $screen_width_px
+      height: $screen_height_px
+
+touchscreen:
+  - platform: sdl
+    id: my_touchscreen
+    display: my_display

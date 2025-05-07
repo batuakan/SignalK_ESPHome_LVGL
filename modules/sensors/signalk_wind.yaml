@@ -1,0 +1,97 @@
+signalk:
+  host: 192.168.0.3
+
+sensor:
+  
+  - platform: signalk
+    id: environment_wind_speedApparent
+    path: environment.wind.speedApparent
+    period: 200
+    accuracy_decimals: 2
+    unit: "knots"
+    on_value:
+      - lvgl.label.update:
+          id: wind_speed_apparent
+          text:
+            format: "%4.1f"
+            args: [ 'x' ]
+
+  - platform: signalk
+    id: environment_wind_angleApparent
+    path: environment.wind.angleApparent
+    period: 200
+    accuracy_decimals: 2
+    unit: "degrees"
+    on_value:
+      - lvgl.indicator.update:
+          id: wind_needle_apparent
+          value: !lambda return x;
+
+  - platform: signalk
+    id: environment_wind_speedTrue
+    path: environment.wind.speedTrue
+    period: 200
+    accuracy_decimals: 2
+    unit: "knots"
+    on_value:
+      - lvgl.label.update:
+          id: wind_speed_true
+          text:
+            format: "%4.1f"
+            args: [ 'x' ]
+
+  - platform: signalk
+    id: environment_wind_directionTrue
+    path: environment.wind.directionTrue
+    period: 200
+    accuracy_decimals: 2
+    unit: "degrees"
+    on_value:
+      - lvgl.indicator.update:
+          id: wind_needle_true
+          value: !lambda | 
+            if (x > 180)
+              return x - 360;
+            return x;
+
+  - platform: signalk
+    id: navigation_headingTrue
+    path: navigation.headingTrue
+    period: 200
+    accuracy_decimals: 2
+    unit: "degrees"
+    on_value:
+      - lvgl.indicator.update:
+          id: compass_rose
+          value: !lambda | 
+            return -1 * x; 
+      - lvgl.label.update:
+          id: heading_magnetic
+          text:
+            format: "%.0f°M"
+            args: [ 'x' ]   
+
+  - platform: signalk
+    id: navigation_headingMagnetic
+    path: navigation.headingMagnetic
+    accuracy_decimals: 2
+    unit: "degrees"
+    # on_value:
+    #   - lvgl.indicator.update:
+    #       id: compass_rose
+    #       value: !lambda | 
+    #         double degrees = x * -180.0 / 3.1415; 
+    #         return degrees;
+  
+  - platform: signalk
+    id: navigation_speedOverGround
+    path: navigation.speedOverGround
+    period: 200
+    accuracy_decimals: 2
+    unit: "knots"
+    on_value:
+      - lvgl.label.update:
+          id: speed_over_ground
+          text:
+            format: "%4.1f"
+            args: [ 'x' ]  

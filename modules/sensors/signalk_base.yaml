@@ -1,0 +1,7 @@
+external_components:
+  # equivalent shorthand for GitHub
+  - source: github://batuakan/ESPHomeSignalK
+    components: [ signalk ]
+
+signalk:
+  host: 192.168.0.3

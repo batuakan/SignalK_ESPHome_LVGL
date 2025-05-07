@@ -1,0 +1,152 @@
+---
+  - obj:
+      height: $screen_height
+      width: $screen_width
+      align: CENTER
+      bg_color: 0x000000
+      border_width: 0
+      pad_all: 0
+      widgets:
+        - meter:
+            bg_opa: TRANSP
+            align: CENTER
+            height: $screen_height
+            width: $screen_width
+            bg_color: 0x000000
+            # text_font: roboto32
+            # text_color: white
+            scales:
+                               
+              - range_from: 0 # scale for the needle value
+                range_to: 150
+                angle_range: 150
+                rotation: 270
+                ticks:
+                  width: 2
+                  count: 31
+                  length: 25
+                  color: 0xAAAAAA
+                  major:
+                      stride: 6
+                      width: 8
+                      length: 30
+                      color: 0xFFFFFF
+                      label_gap: 20
+              
+              - range_from: 150 # scale for the needle value
+                range_to: 0
+                angle_range: 150
+                rotation: 120
+                ticks:
+                  width: 2
+                  count: 31
+                  length: 25
+                  color: 0xAAAAAA
+                  major:
+                      stride: 6
+                      width: 8
+                      length: 30
+                      color: 0xFFFFFF
+                      label_gap: 20
+
+              - range_from: -180 # scale for the needle value
+                range_to: 180
+                angle_range: 360
+                rotation: 90
+                ticks:
+                  color: 0xAAAAAA
+                  width: 2
+                  count: 73
+                  length: 25
+                  # major:
+                  #     stride: 6
+                  #     width: 8
+                  #     length: 30
+                  #     color: 0xFFFFFF
+                  #     label_gap: 30
+                indicators:  
+                  - image:
+                      id: compass_rose
+                      src: compass_rose_indicator
+                      pivot_x: 190
+                      pivot_y: 190
+                      value: 30  
+                  - image:
+                      id: wind_needle_true
+                      src: trueWind_indicator
+                      pivot_x: -190
+                      pivot_y: 25
+                      value: 40
+                  - image:
+                      id: wind_needle_apparent
+                      src: apparentWind_indicator
+                      pivot_x: -170
+                      pivot_y: 25
+                      value: 30     
+                  - arc:
+                      color: 0x00FF00
+                      start_value: 20
+                      end_value: 60
+                      width: 20
+                  - arc:
+                      color: 0xFF0000
+                      start_value: -60
+                      end_value: -20
+                      width: 20
+
+
+        - label:
+            id: heading_magnetic
+            text: "150°M"
+            align: CENTER
+            text_color: 0xFFFFFF
+            text_font: roboto24
+            y: -150
+
+        - label:
+            id: speed_over_ground
+            text: "00.0"
+            align: CENTER
+            text_color: 0xFFFFFF
+            text_font: roboto64_900
+            y: -80
+
+        - label:
+            id: speed_over_ground_sog_kn
+            text: "SOG Kn"
+            align: CENTER
+            text_color: 0xFFFFFF
+            text_font: roboto24
+            y: -45
+            
+        - label:
+            id: wind_speed_true
+            text: "00.0"
+            align: CENTER
+            text_color: 0xFFFFFF
+            text_font: roboto64_900
+            y: 0
+
+        - label:
+            id: wind_speed_true_tws_kn
+            text: "TWS Kn"
+            align: CENTER
+            text_color: 0xFFFFFF
+            text_font: roboto24
+            y: 35
+
+        - label:
+            id: wind_speed_apparent
+            text: "00.0"
+            align: CENTER
+            text_color: 0xFFFFFF
+            text_font: roboto64_900
+            y: 80
+
+        - label:
+            id: wind_speed_apparent_aws_kn
+            text: "AWS Kn"
+            align: CENTER
+            text_color: 0xFFFFFF
+            text_font: roboto24
+            y: 115

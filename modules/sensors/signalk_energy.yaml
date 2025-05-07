@@ -1,0 +1,45 @@
+sensor:
+  - platform: signalk
+    id: electrical_batteries_shunt_current
+    path: electrical.batteries.shunt.current
+    period: 2000
+    accuracy_decimals: 2
+    on_value:
+      - lvgl.label.update:
+          id: shunt_current_label
+          text:
+            format: "%.1f Ah"
+            args: [ 'x' ]
+
+  - platform: signalk
+    id: electrical_solar_mppt_current
+    path: electrical.solar.mppt.current
+    period: 2000
+    accuracy_decimals: 2
+    on_value:
+      - lvgl.label.update:
+          id: solar_current_label
+          text:
+            format: "%.1f Ah"
+            args: [ 'x' ]
+
+  - platform: signalk
+    id: electrical_batteries_shunt_voltage
+    path: electrical.batteries.shunt.voltage
+    period: 2000
+    accuracy_decimals: 2
+    on_value:
+      - lvgl.indicator.update:
+          id: battery_voltage_needle
+          value: !lambda return x * 10;
+
+  - platform: signalk
+    id: electrical_batteries_shunt_capacity_stateOfCharge
+    path: electrical.batteries.shunt.capacity.stateOfCharge
+    period: 5000
+    accuracy_decimals: 2
+    unit: "percentage"
+    on_value:
+      - lvgl.indicator.update:
+          id: battery_state_of_charge_needle
+          value: !lambda return x;

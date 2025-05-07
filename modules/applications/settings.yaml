@@ -1,0 +1,10 @@
+lvgl:
+  theme: !include { file: ../base/theme.yaml }
+  pages:
+    - id: settings_page
+      skip: true
+      <<: !include
+        file: ../sections/swipe_navigation.yaml
+      widgets:
+        <<: !include
+          file: ../screens/settings_screen.yaml
